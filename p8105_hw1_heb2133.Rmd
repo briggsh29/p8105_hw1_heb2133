@@ -15,7 +15,7 @@ library(tidyverse)
 
 Create a data frame comprised with the specified elements.
 
-```{r}
+```{r create_df}
 prob1_df = 
   tibble(
     samp = rnorm(10),
@@ -28,7 +28,7 @@ prob1_df =
 
 Take the mean of each variable in data frame.
 
-```{r}
+```{r mean_df}
 mean(pull(prob1_df, samp))
 mean(pull(prob1_df, samp_gt_0))
 mean(pull(prob1_df, vec_char))
@@ -37,12 +37,22 @@ mean(pull(prob1_df, vec_factor))
 
 We are able to take the mean of numbers and logical variables, but not character or factor variables.
 
-```{r eval = FALSE}
-as.numeric(pull(prob1_df, samp))
+Convert the logical, character, and factor variables (output not shown):
+
+```{r convert_var, eval = FALSE}
 as.numeric(pull(prob1_df, samp_gt_0))
 as.numeric(pull(prob1_df, vec_char))
 as.numeric(pull(prob1_df, vec_factor))
 ```
 
+What happens, and why? Does this help explain what happens when you try to take the mean?
+
+Convert the logical, character, and factor variables, and multiply by random sample:
+
+```{r convert_multiply_df}
+as.numeric(pull(prob1_df, samp_gt_0)) * pull(prob1_df, samp)
+as.numeric(pull(prob1_df, vec_char)) * pull(prob1_df, samp)
+as.numeric(pull(prob1_df, vec_factor)) * pull(prob1_df, samp)
+```
 
 ## Problem 2
