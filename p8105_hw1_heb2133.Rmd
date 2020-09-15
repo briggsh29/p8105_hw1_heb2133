@@ -1,54 +1,48 @@
 ---
-title: "Simple document"
+title: "Homework 1"
 author: "Hannah Briggs"
-date: "August 2020"
-output:
-  pdf_document: default
-  word_document: default
+output: github_document
 ---
 
-I'm an R Markdown document! 
-
-# Section 1
-
-### Data frame and plot
-
-Here's a **code chunk** that samples from 
-a _normal distribution_:
+Below are my solutions to HW 1.
 
 ```{r}
-samp = rnorm(100)
-length(samp)
+library(tidyverse)
 ```
 
-# Section 2
 
-I can take the mean of the sample, too!
-The mean is `r mean(samp)`.
+## Problem 1
 
-The code chunk below creates a dataframe and generates a plot.
+Create a data frame comprised with the specified elements.
 
-```{r plot_example, echo = FALSE}
-library(tidyverse)
-
-plot_df = tibble(
-  x = rnorm(500, mean = 2, sd = 4), 
-  y = 3 - 4.2 * x + rnorm(500), 
+```{r}
+prob1_df = 
+  tibble(
+    samp = rnorm(10),
+    samp_gt_0 = samp > 0, 
+    vec_char = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j"),
+    vec_factor = factor(c("low", "low", "low", "mod", "mod", "mod", "mod", "high", "high", "high"))
 )
 
-ggplot(plot_df, aes(x = x, y = y)) + geom_point()
-
 ```
- 
-A great plot.
 
-Here is a list:
+Take the mean of each variable in data frame.
 
-### table 
+```{r}
+mean(pull(prob1_df, samp))
+mean(pull(prob1_df, samp_gt_0))
+mean(pull(prob1_df, vec_char))
+mean(pull(prob1_df, vec_factor))
+```
 
-Col 1 | Col 2
-------|-------
-a     | b
-c     | d
+We are able to take the mean of numbers and logical variables, but not character or factor variables.
 
-> this is a block quote
+```{r eval = FALSE}
+as.numeric(pull(prob1_df, samp))
+as.numeric(pull(prob1_df, samp_gt_0))
+as.numeric(pull(prob1_df, vec_char))
+as.numeric(pull(prob1_df, vec_factor))
+```
+
+
+## Problem 2
