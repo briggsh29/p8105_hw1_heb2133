@@ -1,0 +1,54 @@
+---
+title: "Simple document"
+author: "Hannah Briggs"
+date: "August 2020"
+output:
+  pdf_document: default
+  word_document: default
+---
+
+I'm an R Markdown document! 
+
+# Section 1
+
+### Data frame and plot
+
+Here's a **code chunk** that samples from 
+a _normal distribution_:
+
+```{r}
+samp = rnorm(100)
+length(samp)
+```
+
+# Section 2
+
+I can take the mean of the sample, too!
+The mean is `r mean(samp)`.
+
+The code chunk below creates a dataframe and generates a plot.
+
+```{r plot_example, echo = FALSE}
+library(tidyverse)
+
+plot_df = tibble(
+  x = rnorm(500, mean = 2, sd = 4), 
+  y = 3 - 4.2 * x + rnorm(500), 
+)
+
+ggplot(plot_df, aes(x = x, y = y)) + geom_point()
+
+```
+ 
+A great plot.
+
+Here is a list:
+
+### table 
+
+Col 1 | Col 2
+------|-------
+a     | b
+c     | d
+
+> this is a block quote
