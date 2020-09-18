@@ -81,7 +81,7 @@ mean(penguins$flipper_length_mm, na.rm = TRUE)
 # Species variable: Adelie (152), Chinstrap(68), and Gentoo (124)
 # Island variable: Biscoe (168), Dream (124), and Torgersen (52)
 # Sex variable: Male (168), Female (165), and NA (11)
-# Other variables measured: Flipper length, Body mass, Bill length, Bill depth, and year.
+# Other variables measured: Flipper length, Body mass, Bill length, Bill depth, and Year.
 
 # 344 rows in data set 
 
@@ -89,5 +89,17 @@ mean(penguins$flipper_length_mm, na.rm = TRUE)
 
 # Flipper length mean is 200.9152 mm.
 
+```
+
+Scatterplot of flipper length and bill length:
+
+```{r}
+penguin_scatter = ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+```
+
+Export scatterplot:
+
+```{r}
+ggsave("penguin_scatter.pdf", height = 4, width = 6)
 ```
 
