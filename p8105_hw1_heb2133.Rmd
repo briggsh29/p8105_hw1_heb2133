@@ -51,7 +51,7 @@ Character variables cannot be converted to numeric, with an output of "NA", whic
 
 Factor variables can be converted and assigned a number value to indicate their corresponding level.
 
-Convert the logical vector:
+Convert the logical vector as described:
 
 ```{r convert_multiply_df}
 as.numeric(pull(prob1_df, samp_gt_0)) * pull(prob1_df, samp)
@@ -60,3 +60,34 @@ as.numeric(as.factor(pull(prob1_df, vec_factor)))* pull(prob1_df, samp)
 ```
 
 ## Problem 2
+
+Install and load penguins dataset. 
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+
+Describe the penguins dataset (names/values of important variables, size of the dataset, and mean flipper length:
+
+```{r}
+summary.data.frame(penguins)
+
+nrow(penguins)
+
+ncol(penguins)
+
+mean(penguins$flipper_length_mm, na.rm = TRUE)
+
+#Dataset summary:
+# Species variable: Adelie (152), Chinstrap(68), and Gentoo (124)
+# Island variable: Biscoe (168), Dream (124), and Torgersen (52)
+# Sex variable: Male (168), Female (165), and NA (11)
+# Other variables measured: Flipper length, Body mass, Bill length, Bill depth, and year.
+
+# 344 rows in data set 
+
+# 8 columns in data set
+
+# Flipper length mean is 200.9152 mm.
+
+```
+
