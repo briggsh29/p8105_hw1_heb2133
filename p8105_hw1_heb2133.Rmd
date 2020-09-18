@@ -26,7 +26,7 @@ prob1_df =
 
 ```
 
-Take the mean of each variable in data frame.
+Take the mean of each variable in the data frame.
 
 ```{r mean_df}
 mean(pull(prob1_df, samp))
@@ -45,14 +45,18 @@ as.numeric(pull(prob1_df, vec_char))
 as.numeric(pull(prob1_df, vec_factor))
 ```
 
-What happens, and why? Does this help explain what happens when you try to take the mean?
+The logical variable can be converted to numeric as the output is assigned a binary value of 0 or 1, corresponding to yes or no (if sample value is greater than 0), and why our mean is less than 1.
 
-Convert the logical, character, and factor variables, and multiply by random sample:
+Character variables cannot be converted to numeric, with an output of "NA", which is why we are unable to compute a mean for this variable.
+
+Factor variables can be converted and assigned a number value to indicate their corresponding level.
+
+Convert the logical vector:
 
 ```{r convert_multiply_df}
 as.numeric(pull(prob1_df, samp_gt_0)) * pull(prob1_df, samp)
-as.numeric(pull(prob1_df, vec_char)) * pull(prob1_df, samp)
-as.numeric(pull(prob1_df, vec_factor)) * pull(prob1_df, samp)
+as.factor(pull(prob1_df, vec_char)) * pull(prob1_df, samp)
+as.numeric(as.factor(pull(prob1_df, vec_factor)))* pull(prob1_df, samp)
 ```
 
 ## Problem 2
